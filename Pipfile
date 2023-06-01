@@ -11,6 +11,7 @@ djoser = "*"
 pillow = "*"
 stripe = "*"
 python-dotenv = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
