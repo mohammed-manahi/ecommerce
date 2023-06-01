@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Use dot env to manage credentials
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5$5a^m4rb!#atryud%b)jg6dsw-d+k#f)5)@04v0zgoiy%tuuf'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,8 +83,13 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # Configure postgres database connection
+        'ENGINE': str(os.getenv('DATABASE_ENGINE')),
+        'NAME': str(os.getenv('DATABASE_NAME')),
+        'USER': str(os.getenv('DATABASE_USERNAME')),
+        'PASSWORD': str(os.getenv('DATABASE_PASSWORD')),
+        'HOST': str(os.getenv('DATABASE_HOST')),
+        'PORT': str(os.getenv('DATABASE_PORT')),
     }
 }
 
