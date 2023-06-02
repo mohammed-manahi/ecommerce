@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'djoser'
+    'djoser',
+    # Add local app product to installed apps
+    'product.apps.ProductConfig'
 ]
 
 MIDDLEWARE = [
