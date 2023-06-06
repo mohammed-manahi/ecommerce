@@ -18,6 +18,8 @@ class Category(models.Model):
         """
         ordering = ['name', ]
         indexes = [models.Index(fields=['name']), models.Index(Lower('name').desc(), name='lower_category_name_idx')]
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
@@ -49,6 +51,8 @@ class Product(models.Model):
         """
         ordering = ['-created_at', 'name', ]
         indexes = [models.Index(fields=['name']), models.Index(Lower('name').desc(), name='lower_product_name_idx')]
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
 
     def __str__(self):
         return self.name

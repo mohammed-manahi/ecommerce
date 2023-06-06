@@ -24,8 +24,11 @@ urlpatterns = [
     # Include djoser urls in main url patterns
     path('api/v1', include('djoser.urls')),
     path('api/v1', include('djoser.urls.authtoken')),
+    # Include url patterns of product app
+    path('api/v1', include('product.urls')),
 ]
 
 if settings.DEBUG:
+    # Set media and static file serving for development environment
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
